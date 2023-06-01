@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevo Vehiculo</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form novalidate [formGroup]="nuevoForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Placa</ion-label>
+        <ion-input type="text" formControlName="placa" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tipo de vehículo</ion-label>
+        <ion-select
+          formControlName="tipoVehiculo"
+          placeholder="Seleccione una opción"
+          interface="popover"
+          required
+        >
+          <ion-select-option value="Carro">Carro</ion-select-option>
+          <ion-select-option value="Moto">Moto</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Año</ion-label>
+        <ion-input type="text" formControlName="anio" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Color</ion-label>
+        <ion-input type="text" formControlName="color"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Marca</ion-label>
+        <ion-input type="text" formControlName="marca"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <ion-button
+        color="primary"
+        expand="block"
+        type="button"
+        (click)="nuevo()"
+        [disabled]="!nuevoForm.valid"
+        >Crear Vehiculo</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

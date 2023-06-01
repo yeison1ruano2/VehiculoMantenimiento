@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mantenimientos de vehiculo</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="nuevoMantenimiento()" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list *ngIf="seleccionadoVehiculo">
+    <ion-item>
+      <ion-avatar
+        slot="start"
+        *ngIf="seleccionadoVehiculo.tipoVehiculo == 'Carro'"
+      >
+        <ion-icon size="large" name="car"></ion-icon>
+      </ion-avatar>
+      <ion-avatar
+        slot="start"
+        *ngIf="seleccionadoVehiculo.tipoVehiculo == 'Moto'"
+      >
+        <ion-icon size="large" name="bicycle"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h3>{{seleccionadoVehiculo.nombre}}</h3>
+        <h3>{{seleccionadoVehiculo.anio}}</h3>
+        <h3>{{seleccionadoVehiculo.marca}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <h3>Mantenimientos</h3>
+  </div>
+  <ion-card *ngFor="let mantenimiento of mantenimientos">
+    <ion-item (click)="selectMantenimiento(mantenimiento.id)">
+      <ion-icon slot="start" name="settings"></ion-icon>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-label>Fecha</ion-label>
+            <ion-label>{{mantenimiento.fecha | date}}</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Descripción</ion-label>
+            <ion-label>{{mantenimiento.descripcion}}</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Repuestos</ion-label>
+            <ion-label>{{mantenimiento.repuestos}}</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Valor Total</ion-label>
+            <ion-label>{{mantenimiento.valorTotal}}</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Mecanico</ion-label>
+            <ion-label>{{mantenimiento.mecanico}}</ion-label>
+          </ion-col>
+          <ion-col size="4">
+            <ion-label>Numero de mecanico</ion-label>
+            <ion-label>{{mantenimiento.numMecanico}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Vehiculos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/nuevovehiculo" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let vehiculo of (vehiculos | async)"
+      (click)="selectVehiculo(vehiculo.id)"
+    >
+      <ion-label
+        ><h2>{{vehiculo.nombre}}</h2>
+        <p>{{vehiculo.tipoVehiculo}}</p>
+        <p>{{vehiculo.placa}}</p>
+        <p>{{vehiculo.anio}}</p></ion-label
+      >
+      <ion-avatar slot="start" *ngIf="vehiculo.tipoVehiculo == 'Carro'">
+        <ion-icon size="large" name="car"></ion-icon>
+      </ion-avatar>
+      <ion-avatar slot="start" *ngIf="vehiculo.tipoVehiculo == 'Moto'">
+        <ion-icon size="large" name="bicycle"></ion-icon>
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-content>

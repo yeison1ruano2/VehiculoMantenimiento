@@ -1,0 +1,101 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nuevo mantenimiento</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresar()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form novalidate [formGroup]="nuevoForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Fecha</ion-label>
+        <ion-input
+          type="date"
+          formControlName="fecha"
+          name="fecha"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input
+          type="text"
+          formControlName="descripcion"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Repuesto</ion-label>
+        <ion-input
+          type="text"
+          formControlName="repuestos"
+          #nuevoRepuestoInput
+        ></ion-input>
+        <ion-button
+          fill="outline"
+          slot="end"
+          (click)="guardarRepuesto()"
+          color="primary"
+          >Guardar</ion-button
+        >
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor Total</ion-label>
+        <ion-input
+          type="text"
+          formControlName="valorTotal"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mecanico</ion-label>
+        <ion-input type="text" formControlName="mecanico" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Numero mecanico</ion-label>
+        <ion-input
+          type="text"
+          formControlName="numMecanico"
+          required
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding *ngIf="repuestos.length>0">
+      <h3>Repuestos</h3>
+    </div>
+    <ion-list *ngIf="repuestos.length > 0">
+      <ion-item *ngFor="let repuesto of repuestos; let i= index">
+        {{ i+1 }} {{ repuesto }}
+        <ion-button
+          (click)="eliminarRepuesto(i)"
+          color="danger"
+          fill="outline"
+          slot="end"
+          >Eliminar</ion-button
+        >
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <ion-button
+        color="primary"
+        expand="block"
+        type="button"
+        (click)="crearMantenimiento()"
+        [disabled]="!nuevoForm.valid"
+        >Crear mantenimiento</ion-button
+      >
+      <ion-button
+        color="secondary"
+        expand="block"
+        (click)="regresar()"
+        type="button"
+        >Cancelar</ion-button
+      >
+    </div>
+  </form>
+</ion-content>
