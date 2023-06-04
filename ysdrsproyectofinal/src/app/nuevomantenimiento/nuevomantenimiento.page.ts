@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { VehiculosService } from '../services/vehiculos.service';
 import { MantenimientoService } from '../services/mantenimiento.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AlertController, IonInput, ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Mantenimiento } from 'src/interfaces/Mantenimiento';
 
 @Component({

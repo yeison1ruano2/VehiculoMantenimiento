@@ -3,8 +3,8 @@ export interface Mantenimiento {
   fecha: string;
   descripcion: string;
   repuestos: string[];
-  valorTotal: string;
+  valorTotal: number;
   mecanico: string;
-  numMecanico: string;
+  numMecanico: number;
   idVehiculo: string;
 }
