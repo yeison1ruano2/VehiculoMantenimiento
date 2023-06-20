@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./nuevovehiculo.page.scss'],
 })
 export class NuevovehiculoPage implements OnInit {
-  nuevoVehiculo!: Vehiculo[];
+  nuevoVehiculo!: Vehiculo;
   tipoVehiculo!: string;
   nuevoForm: FormGroup;
 
@@ -34,7 +34,6 @@ export class NuevovehiculoPage implements OnInit {
   ngOnInit() {}
 
   regresar(): void {
-    console.log('regresar');
     this.router.navigateByUrl('tabs/vehiculos');
   }
 
